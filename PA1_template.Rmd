@@ -1,8 +1,7 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
-output: 
-html_document:
-keep_md: true
+output:
+keep_md: TRUE
 ---
 
 ``` {r r setoptions, echo=FALSE}
@@ -89,8 +88,8 @@ A:      The mean is the same as before imputing the missing data.This is because
 ```{r echo=TRUE}
 newDataSet$day=ifelse(as.POSIXlt(as.Date(newDataSet$date))$wday%%6==0,"weekend","weekday")
 newDataSet$day=factor(newDataSet$day,levels=c("weekday","weekend"))
-stepsInterval2=aggregate(steps~interval+day,newDataSet,mean)
-xyplot(steps~interval|factor(day),data=stepsInterval2,aspect=1/2,type="l")
+differenceInDays=aggregate(steps~interval+day,newDataSet,mean)
+xyplot(steps~interval|factor(day),data=differenceInDays,type="l",aspect=1/2, col="green")
 ```
 
 We can see difference between activity patterns between weekdays and weekends
